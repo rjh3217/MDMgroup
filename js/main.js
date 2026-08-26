@@ -34,15 +34,38 @@ $(function () {
         });
 
 
+        /* ========================================
+           SC5 푸터
+        ======================================== */
+
         let footerClosing = false;
 
         $('#sc5').on('wheel', function (e) {
 
+            /* 푸터가 닫히는 중이면 스크롤 완전히 차단 */
+            if (footerClosing) {
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                return;
+
+            }
+
+
+            /* 아래로 스크롤 → 푸터 등장 */
             if (e.originalEvent.deltaY > 0) {
+
+                e.preventDefault();
+                e.stopPropagation();
 
                 $('footer').addClass('footer-up');
 
-            } else if (
+            }
+
+
+            /* 위로 스크롤 → 푸터 닫기 */
+            else if (
                 e.originalEvent.deltaY < 0 &&
                 $('footer').hasClass('footer-up')
             ) {
@@ -50,28 +73,28 @@ $(function () {
                 e.preventDefault();
                 e.stopPropagation();
 
-                if (footerClosing) {
-                    return;
-                }
-
                 footerClosing = true;
 
+                /* 푸터 닫기 */
                 $('footer').removeClass('footer-up');
 
-                setTimeout(function () {
-                    footerClosing = false;
-                }, 1000);
-            }
 
-            if (footerClosing) {
-                e.preventDefault();
-                e.stopPropagation();
+                /* CSS transition이 끝난 후 스크롤 다시 허용 */
+                setTimeout(function () {
+
+                    footerClosing = false;
+
+                }, 600);
+
             }
 
         });
 
 
-        /* 페이지 네비 클릭 */
+        /* ========================================
+           페이지 네비 클릭
+        ======================================== */
+
         $('.page_nav a').on('click', function (e) {
 
             e.preventDefault();
@@ -83,7 +106,10 @@ $(function () {
         });
 
 
-        /* 고탑 버튼 */
+        /* ========================================
+           고탑 버튼
+        ======================================== */
+
         $('.btn-top').click(function (e) {
 
             e.preventDefault();
@@ -95,7 +121,10 @@ $(function () {
         });
 
 
-        /* 팝업이 떠있는 동안 fullpage 스크롤 막기 */
+        /* ========================================
+           팝업이 떠있는 동안 fullpage 스크롤 막기
+        ======================================== */
+
         $('.popupbox').on('wheel', function (e) {
 
             e.preventDefault();
@@ -104,7 +133,10 @@ $(function () {
         });
 
 
-        /* 팝업 닫기 */
+        /* ========================================
+           팝업 닫기
+        ======================================== */
+
         $('.botton a, .xbutton').click(function () {
 
             $('.popupbox').hide();
