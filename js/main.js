@@ -42,49 +42,75 @@ $(function () {
 
         $('#sc5').on('wheel', function (e) {
 
-            /* 푸터가 닫히는 중이면 스크롤 완전히 차단 */
+            /* ========================================
+               아래로 스크롤
+            ======================================== */
+
+            if (e.originalEvent.deltaY > 0) {
+
+                /* 푸터가 아직 올라오지 않았을 때만
+                   푸터를 올리고 스크롤을 막음 */
+                if (!$('footer').hasClass('footer-up')) {
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    $('footer').addClass('footer-up');
+
+                }
+
+                /* 푸터가 이미 올라와 있으면
+                   SC5에서 계속 머무름 */
+                return;
+            }
+
+
+            /* ========================================
+               위로 스크롤
+            ======================================== */
+
+            if (e.originalEvent.deltaY < 0) {
+
+                /* 푸터가 올라와 있으면
+                   푸터만 닫음 */
+                if ($('footer').hasClass('footer-up')) {
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+
+                    /* 이미 닫히는 중이면 무시 */
+                    if (footerClosing) {
+                        return;
+                    }
+
+
+                    footerClosing = true;
+
+
+                    /* 푸터 닫기 */
+                    $('footer').removeClass('footer-up');
+
+
+                    /* CSS transition 완료 후
+                       다시 스크롤 허용 */
+                    setTimeout(function () {
+
+                        footerClosing = false;
+
+                    }, 700);
+
+                }
+
+            }
+
+
+            /* 푸터가 닫히는 동안에는
+               fullpage 스크롤 차단 */
             if (footerClosing) {
 
                 e.preventDefault();
                 e.stopPropagation();
-
-                return;
-
-            }
-
-
-            /* 아래로 스크롤 → 푸터 등장 */
-            if (e.originalEvent.deltaY > 0) {
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                $('footer').addClass('footer-up');
-
-            }
-
-
-            /* 위로 스크롤 → 푸터 닫기 */
-            else if (
-                e.originalEvent.deltaY < 0 &&
-                $('footer').hasClass('footer-up')
-            ) {
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                footerClosing = true;
-
-                /* 푸터 닫기 */
-                $('footer').removeClass('footer-up');
-
-
-                /* CSS transition이 끝난 후 스크롤 다시 허용 */
-                setTimeout(function () {
-
-                    footerClosing = false;
-
-                }, 600);
 
             }
 
@@ -115,6 +141,8 @@ $(function () {
             e.preventDefault();
 
             $('footer').removeClass('footer-up');
+
+            footerClosing = false;
 
             $.fn.fullpage.moveTo(1);
 
