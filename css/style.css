@@ -1,0 +1,1948 @@
+@charset "utf-8";
+
+
+/* ========================================
+        RESET
+        ======================================== */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+ul,
+li {
+    list-style: none;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 110px;
+
+    z-index: 100;
+
+    background: transparent;
+
+    transition: height 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* 헤더에 마우스를 올렸을 때 */
+header:hover {
+    height: 440px;
+    background: #fff;
+
+}
+
+
+
+/* ========================================
+   HEADER INNER
+======================================== */
+
+.header {
+    width: 100%;
+    height: 110px;
+}
+
+
+.header_inner {
+    position: relative;
+
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+}
+
+header:hover .header_inner {
+    border-bottom: 1px solid rgb(168, 157, 157);
+}
+
+/* ========================================
+   LOGO
+======================================== */
+
+.logo {
+    position: absolute;
+
+    left: 40px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+}
+
+
+.logo img {
+    display: block;
+
+    width: 68px;
+    height: 50px;
+}
+
+
+.blue_logo {
+    display: none;
+}
+
+header:hover .white_logo {
+    display: none;
+}
+
+header:hover .blue_logo {
+    display: block;
+}
+
+/* 섹션 도착하면 로고 및 폰트 색상 변경 */
+header.header-dark .white_logo {
+    display: none;
+}
+
+header.header-dark .blue_logo {
+    display: block;
+}
+
+header.header-dark .hd_menu>li>a {
+    color: #555;
+}
+
+/* ========================================
+   NAV
+======================================== */
+
+nav {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+}
+
+
+.hd_menu {
+    display: flex;
+    align-items: center;
+
+    /* gap: 80px; */
+}
+
+
+.hd_menu>li {
+    position: relative;
+    padding: 30px 40px;
+}
+
+
+.hd_menu>li>a {
+    display: block;
+
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: color 0.3s ease;
+}
+
+
+/* 헤더 hover → 메인 메뉴 검정 */
+header:hover .hd_menu>li>a {
+    color: #555;
+    border-bottom: gray;
+}
+
+header:hover .hd_menu>li>a:hover {
+    color: #1e5fb3;
+}
+
+/* ========================================
+   2차 메뉴
+======================================== */
+
+.hd_menu>li>ul {
+    display: block;
+
+    position: absolute;
+
+    top: 90px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 150px;
+
+    padding-top: 25px;
+
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.25s ease;
+}
+
+
+/* 하나라도 hover하면 전체 2차 메뉴 표시 */
+header:hover .hd_menu>li>ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* 2차 메뉴 글자 */
+.hd_menu>li>ul li a {
+    display: block;
+
+    padding: 9px 0;
+
+    color: #777;
+
+    font-size: 15px;
+    font-weight: 400;
+
+    white-space: nowrap;
+}
+
+
+/* 2차 메뉴 hover */
+.hd_menu>li>ul li a:hover {
+    color: #1d4f91;
+    text-decoration: underline;
+}
+
+/* ========================================
+        SC1
+======================================== */
+
+.sc1 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sc1_sw {
+    width: 100%;
+    height: 100%;
+}
+
+.sc1_sw .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.sc1_sw .swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.sc1_sw .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* ========================================
+        SC1 슬라이더 버튼
+        ======================================== */
+
+.sc1_sw .swiper-button-prev,
+.sc1_sw .swiper-button-next {
+    width: 100px;
+    height: 100px;
+    color: transparent;
+    top: 43%;
+}
+
+
+.sc1_sw .swiper-button-prev::after,
+.sc1_sw .swiper-button-next::after {
+    content: "" !important;
+
+    display: block;
+
+    width: 150px;
+    height: 60px;
+
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+
+    font-family: none !important;
+    font-size: 0;
+}
+
+
+/* 왼쪽 */
+
+.sc1_sw .swiper-button-prev::after {
+    transform: rotate(-45deg);
+}
+
+
+/* 오른쪽 */
+
+.sc1_sw .swiper-button-next::after {
+    transform: rotate(135deg);
+}
+
+
+/* 위치 */
+
+.sc1_sw .swiper-button-prev {
+    left: 12%;
+}
+
+
+.sc1_sw .swiper-button-next {
+    right: 14%;
+}
+
+
+
+/* ========================================
+        SC2
+        ======================================== */
+
+.sc2 {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    background: url('../images/sc2.jpg') center center / cover no-repeat;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+.sc2::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        /* 왼쪽 */
+        linear-gradient(to right,
+            transparent 4.95%,
+            rgba(255, 255, 255, 0.2) 5%,
+            transparent 5.05%),
+
+        /* 1번째 칸 */
+        linear-gradient(to right,
+            transparent 27.45%,
+            rgba(255, 255, 255, 0.2) 27.5%,
+            transparent 27.55%),
+
+        /* 가운데 */
+        linear-gradient(to right,
+            transparent 49.95%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 50.05%),
+
+        /* 3번째 칸 */
+        linear-gradient(to right,
+            transparent 72.45%,
+            rgba(255, 255, 255, 0.2) 72.5%,
+            transparent 72.55%),
+
+        /* 오른쪽 */
+        linear-gradient(to right,
+            transparent 94.95%,
+            rgba(255, 255, 255, 0.2) 95%,
+            transparent 95.05%);
+
+    z-index: 15;
+}
+
+
+
+/* ========================================
+        SC2 타이틀
+        ======================================== */
+
+.sc2 .title {
+    position: absolute;
+
+    top: 22vh;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    color: #fff;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+.sc2 .title p {
+    font-weight: 300;
+
+    font-size: 2.63vh;
+
+    letter-spacing: .2em;
+}
+
+
+.sc2 .title strong {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 9.47vh;
+
+    line-height: 1;
+}
+
+
+
+/* ========================================
+        SC2 TAB
+        ======================================== */
+
+.sc2 .tab {
+    position: absolute;
+
+    left: 5%;
+    bottom: 0;
+
+    width: 90%;
+    height: 70%;
+
+    display: flex;
+
+    z-index: 10;
+}
+
+
+
+/* ========================================
+        4개 칸
+        ======================================== */
+
+.sc2 .tab>li {
+    position: relative;
+
+    flex: 1;
+
+    width: 25%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+
+/* ========================================
+        Hover 어두운 배경
+        ======================================== */
+
+.sc2 .tab>li::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: url("../images/bg-grd-content2.png") center center / cover no-repeat;
+
+    opacity: 0;
+
+    transition: opacity 0.5s ease;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* hover */
+
+.sc2 .tab>li:hover::before {
+    opacity: 1;
+}
+
+
+
+/* ========================================
+        각 칸 내용
+        ======================================== */
+
+.sc2 .tab .inner {
+    position: absolute;
+
+    /*
+                평상시 위치
+                숫자가 아래쪽에 보이도록 설정
+            */
+    top: 35%;
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 0 30px;
+
+    color: #fff;
+
+    text-align: center;
+
+    z-index: 4;
+
+    transition: top 0.5s ease;
+}
+
+
+
+/* ========================================
+        Hover 시 내용 위로 이동
+        ======================================== */
+
+.sc2 .tab>li:hover .inner {
+    top: 20%;
+}
+
+
+
+/* ========================================
+        제목
+        ======================================== */
+
+.sc2 .tab .inner>strong {
+    display: block;
+
+    margin-bottom: 25px;
+
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+
+
+/* ========================================
+        연도
+        ======================================== */
+
+.sc2 .tab .num {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    margin: 0 auto;
+}
+
+
+
+/* 첫 번째 연도 */
+
+.sc2 .tab .num em {
+    font-size: 48px;
+
+    font-weight: 700;
+
+    font-style: italic;
+
+    line-height: 1;
+}
+
+
+
+/* ========================================
+        연도 옆 선
+        ======================================== */
+
+.sc2 .tab .num span {
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-left: 8px;
+
+    background: #fff;
+}
+
+
+
+/* ========================================
+        두 번째 연도
+        ======================================== */
+
+.sc2 .tab .num+em {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+    font-style: italic;
+
+    line-height: 1;
+
+    padding-left: 50px;
+}
+
+
+
+/* ========================================
+        첫 번째 칸 기본 색상
+        ======================================== */
+
+.sc2 .tab>li:first-child .num em,
+.sc2 .tab>li:first-child .num+em {
+    color: #fff;
+}
+
+
+
+/* ========================================
+        Hover 시 연도 노란색
+        ======================================== */
+
+.sc2 .tab>li:hover .num em,
+.sc2 .tab>li:hover .num+em {
+    color: #f5b400;
+}
+
+
+
+/* ========================================
+        설명
+        ======================================== */
+
+.sc2 .tab .inner>p {
+    margin-top: 30px;
+
+    color: #fff;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+
+
+/* ========================================
+        Hover → 설명 등장
+        ======================================== */
+
+.sc2 .tab>li:hover .inner>p {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* ========================================
+        자세히보기
+        ======================================== */
+
+.sc2 .tab .inner>a {
+    position: relative;
+
+    display: inline-block;
+
+    margin-top: 4.63vh;
+
+    padding-top: 40px;
+    padding-right: 30px;
+
+    font-size: 15px;
+    line-height: 1.5em;
+
+    color: #fff;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+
+
+/* ========================================
+        자세히보기 위쪽 가로선
+        ======================================== */
+
+.sc2 .tab .inner>a::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 50px;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background: rgba(255, 255, 255, 0.6);
+}
+
+
+
+/* ========================================
+        자세히보기 오른쪽 화살표
+        ======================================== */
+
+.sc2 .tab .inner>a::after {
+    content: "";
+
+    position: absolute;
+
+    top: 84%;
+    right: 0;
+
+    width: 20px;
+    height: 20px;
+
+    background: url("../images/ico-link.png") center / contain no-repeat;
+
+    transform: translateY(-50%);
+}
+
+
+
+/* ========================================
+        Hover → 자세히보기 등장
+        ======================================== */
+
+.sc2 .tab>li:hover .inner>a {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* ========================================
+        SC3
+        ======================================== */
+
+.sc3 {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    background: url('../images/sc3/sc3_bg.jpg') center center / cover no-repeat;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+
+/* ========================================
+        SC3 타이틀
+        ======================================== */
+
+.sc3 .title {
+    position: absolute;
+
+    top: 22vh;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    color: #000;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+.sc3 .title p {
+    font-weight: 300;
+
+    font-size: 2.63vh;
+
+    letter-spacing: .2em;
+}
+
+
+.sc3 .title strong {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 9.47vh;
+
+    line-height: 1;
+}
+
+
+
+/* ========================================
+        SC3 카드 영역
+        ======================================== */
+
+.sc3 .tab {
+    position: absolute;
+
+    left: 50%;
+    bottom: 9vh;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+}
+
+
+.sc3 .tab>ul {
+    display: flex;
+    gap: 28px;
+
+    width: max-content;
+}
+
+
+
+/* ========================================
+        SC3 카드
+        ======================================== */
+
+.sc3 .tab>ul>li {
+    position: relative;
+
+    width: 340px;
+    height: 340px;
+
+    overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+
+/* ========================================
+        카드별 배경 이미지
+        ======================================== */
+
+.sc3 .tab .div1 {
+    background-image: url("../images/sc3/sc_3bg-division1.jpg");
+}
+
+
+.sc3 .tab .div2 {
+    background-image: url("../images/sc3/sc_3_bg-division2.jpg");
+}
+
+
+.sc3 .tab .div3 {
+    background-image: url("../images/sc3/sc3_bg-division3.jpg");
+}
+
+
+
+/* ========================================
+        카드 어두운 오버레이
+        ======================================== */
+
+.sc3 .tab>ul>li::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    /* background: rgba(0, 0, 0, 0.5); */
+
+    z-index: 1;
+
+    transition:
+        background 0.4s ease;
+}
+
+
+
+/* ========================================
+        카드 내용
+        ======================================== */
+
+.sc3 .tab>ul>li>div {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 38px;
+
+    color: #fff;
+
+    text-align: left;
+}
+
+
+
+/* ========================================
+        카드 제목
+        ======================================== */
+
+.sc3 .tab>ul>li strong {
+    display: block;
+
+    font-size: 36px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+
+/* ========================================
+        영문 제목
+        ======================================== */
+
+.sc3 .tab>ul>li span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    letter-spacing: .075em;
+}
+
+
+
+/* ========================================
+        카드 내부 목록
+        ======================================== */
+
+.sc3 .tab>ul>li>div>ul {
+    margin-top: 5vh;
+}
+
+
+/* 목록 */
+
+.sc3 .tab>ul>li>div>ul>li {
+    float: left;
+
+    width: 50%;
+
+    padding-left: 12px;
+
+    margin-bottom: 10px;
+
+    position: relative;
+
+    font-size: 16px;
+
+    font-weight: 300;
+
+    color: #fff;
+
+    white-space: nowrap;
+}
+
+
+
+/* float 해제 */
+
+.sc3 .tab>ul>li>div>ul::after {
+    content: "";
+
+    display: block;
+
+    clear: both;
+}
+
+
+/* 목록 앞쪽 점 */
+
+.sc3 .tab>ul>li>div>ul>li::before {
+    content: "·";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+}
+
+
+
+/* ========================================
+        자세히보기
+        ======================================== */
+
+.sc3 .tab>ul>li>div>a {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 80px;
+    height: 80px;
+
+    font-size: 0;
+
+    /* 어두운 버튼 + 화살표 */
+    background: rgba(0, 0, 0, 0.3) url("../images/sc3/btn-more.png") 50% 50% no-repeat;
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+
+    z-index: 5;
+}
+
+
+
+
+
+/* ========================================
+        HOVER
+        ======================================== */
+
+.sc3 .tab>ul>li:hover {
+
+    /* 위로 이동 */
+    transform: translateY(-30px);
+
+    /* 그림자 */
+    box-shadow:
+        0 25px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* ========================================
+        Hover → 노란색 배경
+        ======================================== */
+
+.sc3 .tab>ul>li:hover::before {
+    background: #ffb500;
+}
+
+
+
+/* ========================================
+        Hover → 카드 이미지 제거
+        ======================================== */
+
+.sc3 .tab>ul>li:hover {
+    background-image: none;
+}
+
+
+
+/* ========================================
+        Hover → 자세히보기 표시
+        ======================================== */
+
+.sc3 .tab>ul>li:hover>div>a {
+    opacity: 1;
+}
+
+.sc3 .tab>ul>.div1>div>ul>li:nth-child(2n) {
+    transform: translateX(30px);
+}
+
+/* sc4 */
+/* ========================================
+SC4
+======================================== */
+
+.sc4 {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #fff;
+
+    overflow: hidden;
+}
+
+
+
+/* ========================================
+SC4 타이틀
+======================================== */
+
+.sc4 .title {
+    position: absolute;
+
+    top: 22vh;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    color: #222;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+.sc4 .title p {
+    font-size: 2.63vh;
+
+    font-weight: 300;
+
+    letter-spacing: .2em;
+}
+
+
+.sc4 .title strong {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 9.47vh;
+
+    line-height: 1;
+}
+
+
+
+/* ========================================
+뒤쪽 이미지 Swiper
+======================================== */
+
+.sc4_bg_swiper {
+    position: absolute;
+
+    top: 67%;
+    left: 0;
+
+    width: 100%;
+    height: 360px;
+
+    transform: translateY(-50%);
+
+    z-index: 1;
+
+    overflow: visible;
+}
+
+
+.sc4_bg_swiper .swiper-slide {
+    width: 350px;
+    height: 320px;
+
+    opacity: 1;
+
+    overflow: hidden;
+}
+
+
+.sc4_bg_swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+
+/* ========================================
+가운데 메인 Swiper
+======================================== */
+
+.sc4_main_swiper {
+    position: absolute;
+    top: 69%;
+    left: 50%;
+
+    width: 990px;
+    height: 360px;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 5;
+    overflow: hidden;
+}
+
+
+.sc4_main_swiper .swiper-slide {
+    display: flex;
+
+    width: 990px;
+    height: 360px;
+
+    background: #fff;
+}
+
+
+
+/* ========================================
+메인 이미지
+======================================== */
+
+.sc4_main_img {
+    width: 440px;
+    height: 360px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+    padding-right: 30px;
+}
+
+
+.sc4_main_img img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+
+/* ========================================
+텍스트
+======================================== */
+
+.sc4_text {
+    width: 550px;
+    height: 360px;
+
+    padding: 25px 75px 0;
+
+    text-align: left;
+
+    background: #fff;
+}
+
+
+.sc4_text strong {
+    display: block;
+
+    color: #ffb500;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.sc4_text h3 {
+    margin-top: 12px;
+
+    color: #222;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.sc4_text span {
+    display: block;
+
+    width: 60px;
+    height: 2px;
+
+    margin-top: 45px;
+
+    background: #ffb500;
+}
+
+
+.sc4_text p {
+    margin-top: 30px;
+
+    color: #333;
+
+    font-size: 16px;
+
+    line-height: 2;
+}
+
+
+
+/* ========================================
+좌우 버튼
+======================================== */
+
+.sc4_prev,
+.sc4_next {
+    position: absolute;
+
+    top: 72%;
+
+    width: 60px;
+    height: 60px;
+
+    z-index: 10;
+    cursor: pointer;
+}
+
+
+/* 왼쪽 버튼 */
+.sc4_prev {
+    left: calc(50% - 555px);
+    transform: translateY(-50%);
+}
+
+/* 오른쪽 버튼 */
+.sc4_next {
+    right: calc(50% - 555px);
+    transform: translateY(-50%);
+}
+
+
+.sc4_prev::after,
+.sc4_next::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 49px;
+    height: 49px;
+
+    border-top: 1px solid #555;
+    border-right: 1px solid #555;
+}
+
+.sc4_prev::after {
+    transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+.sc4_next::after {
+    transform: translate(-70%, -50%) rotate(45deg);
+}
+
+
+
+/* ========================================
+페이지네이션
+======================================== */
+
+.sc4_pagination {
+    position: absolute;
+
+    left: 50% !important;
+    bottom: 8vh !important;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+}
+
+
+.sc4_pagination .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+
+    margin: 0 !important;
+
+    border: 1px solid #ccc;
+
+    border-radius: 0;
+
+    background: transparent;
+
+    opacity: 1;
+}
+
+
+.sc4_pagination .swiper-pagination-bullet-active {
+    width: 70px;
+
+    background: #ffb500;
+
+    border-color: #ffb500;
+}
+
+/* 섹션5 */
+.sc5 {
+    position: relative;
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    background: url(../images/sc5.jpg);
+}
+
+/* sc5 title */
+.sc5 .title {
+    position: absolute;
+    top: 22vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.sc5 .title p {
+    font-size: 2.63vh;
+    /* margin-bottom: 1em; */
+    font-weight: 300;
+    letter-spacing: .2em;
+}
+
+.sc5 .title strong {
+    font-size: 9.47vh;
+}
+
+/* 고탑 버튼 */
+.btn-top {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    font-size: 0;
+    text-indent: -9999px;
+    background: rgba(0, 0, 0, 0.5) url(../images/btn-top.png)center center no-repeat;
+    background-size: 13px 17px;
+    z-index: 999;
+}
+
+/* 푸터 */
+
+/* ========================================
+   FOOTER
+======================================== */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: -175px;
+
+    width: 100%;
+
+    background: #222;
+    color: #fff;
+
+    transition: bottom 0.5s ease;
+    z-index: 90;
+}
+
+footer.footer-up {
+    bottom: 0;
+}
+
+
+/* ========================================
+   FOOTER GROUP 1
+======================================== */
+
+.footer_group1 {
+    height: 76px;
+    border-bottom: 1px solid #333;
+}
+
+
+.footer_inner {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+
+    position: relative;
+}
+
+
+/* 회사소개 / 오시는 길 */
+
+.footer_group1 .footer_inner>ul {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 40px;
+}
+
+
+.footer_group1 .footer_inner>ul li a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+}
+
+
+/* ========================================
+   FAMILY SITE
+======================================== */
+
+.family {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 230px;
+    height: 76px;
+
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+
+    z-index: 10;
+
+    overflow: visible;
+}
+
+
+.family>a {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+
+    padding-left: 20px;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+}
+
+
+.family>a::after {
+    content: "";
+
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform: translateY(-50%);
+
+    background:
+        linear-gradient(#666, #666) calc(50% + 1px) center / 18px 1px no-repeat,
+        linear-gradient(#666, #666) center calc(50% + 1px) / 1px 18px no-repeat;
+}
+
+/* ========================================
+   가족 사이트 목록
+======================================== */
+
+.family>ul {
+    position: absolute;
+
+    left: 0;
+    bottom: 76px;
+
+    width: 100%;
+
+    padding: 0;
+
+    background: #222;
+
+
+    /* 처음에는 높이가 0 */
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.4s ease;
+}
+
+
+/* 호버하면 아래에서 위로 펼쳐짐 */
+
+.family:hover>ul {
+    max-height: 250px;
+}
+
+
+/* ========================================
+   FAMILY SITE 목록
+======================================== */
+
+.family>ul li {
+    transform: translateY(100%);
+
+    transition: transform 0.35s ease;
+}
+
+
+/* 호버하면 li가 올라옴 */
+
+.family:hover>ul li {
+    transform: translateY(0);
+}
+
+
+
+
+.family>ul li a {
+    display: block;
+
+    padding: 7px 20px;
+
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+
+    border-bottom: 1px solid #333;
+}
+
+
+.family>ul li:last-child a {
+    border-bottom: none;
+}
+
+
+.family>ul li a:hover {
+    color: #fff;
+}
+
+
+/* ========================================
+   FOOTER GROUP 2
+======================================== */
+
+.footer_group2 {
+    height: 100px;
+}
+
+
+.footer_group2 .footer_inner {
+    display: flex;
+    align-items: center;
+}
+
+
+.copyright {
+    width: 100%;
+    padding: 20px 0;
+
+    font-size: 14px;
+    line-height: 30px;
+
+    color: #777;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+}
+
+
+.copyright .c {
+    color: #777;
+}
+
+
+/* ========================================
+   TOP BUTTON
+======================================== */
+
+.footer_top {
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+
+    width: 60px;
+    height: 60px;
+
+    background: #111;
+
+    z-index: 999;
+}
+
+
+.footer_top a {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #f5b900;
+
+    font-size: 24px;
+}
+
+/* ========================================
+   PAGE NAV
+======================================== */
+
+.area_function.nav {
+    position: fixed;
+
+    left: 40px;
+    top: 50%;
+
+    width: 20px;
+    height: 180px;
+
+    margin-top: -90px;
+
+    z-index: 9999;
+}
+
+.page_nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 23px;
+
+    margin-top: -5px;
+    width: 20px;
+}
+
+.page_nav a {
+    position: relative;
+
+    display: block;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    font-size: 0;
+
+    transition:
+        width 0.3s ease,
+        height 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* 현재 섹션 */
+
+.page_nav a.active {
+    width: 20px;
+    height: 20px;
+
+    background: transparent;
+
+    border: 1px solid #f5b400;
+}
+
+
+/* 현재 섹션 가운데 점 */
+
+.page_nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 6px;
+    height: 6px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #f5b400;
+}
+
+.popupbox {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    z-index: 9999;
+}
+
+/* 팝업 전체 */
+.popup {
+    position: absolute;
+
+    left: 10px;
+    top: 10px;
+
+    width: 500px;
+
+    background: #fff;
+}
+
+
+/* 팝업 이미지 */
+.popup>a {
+    display: block;
+}
+
+.popup>a img {
+    display: block;
+
+    max-width: 500;
+    width: 100%;
+    height: auto;
+}
+
+
+/* 하단 버튼 영역 */
+.popup .botton {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+
+    background: #fff;
+}
+
+
+/* 24시간 동안 열지 않기 */
+.popup .botton p {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: #777;
+}
+
+
+/* X 버튼 */
+.popup .xbutton {
+    position: relative;
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+
+/* X 만들기 */
+.popup .xbutton::before,
+.popup .xbutton::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 14px;
+    height: 1px;
+
+    background: #555;
+}
+
+.popup .xbutton::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.popup .xbutton::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
